@@ -5,7 +5,8 @@ import torch
 import random
 from torch.nn import functional as F
 
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+# device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+device = torch.device('mps' if torch.backends.mps.is_available() else "cpu")
 dataset = MNIST()
 model = ViT().to(device)
 model.load_state_dict(torch.load('model.pth'))

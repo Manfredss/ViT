@@ -8,7 +8,8 @@ from datasets import MNIST
 from tqdm import tqdm
 
 
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+# device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+device = torch.device('mps' if torch.backends.mps.is_available() else "cpu")
 dataset = MNIST()
 model = ViT().to(device)
 
